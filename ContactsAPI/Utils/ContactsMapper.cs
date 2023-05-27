@@ -19,10 +19,10 @@ namespace ContactsAPI.Utils
                 ProfilaImageUrl = contact.ProfilaImage,
                 Adress = new AddressDTO()
                 {
-                    Street = contact.Adress.Street,
-                    City = contact.Adress.City,
-                    State = contact.Adress.State,
-                    Country = contact.Adress.Country
+                    Street = contact.Address.Street,
+                    City = contact.Address.City,
+                    State = contact.Address.State,
+                    Country = contact.Address.Country
                 }
             };
             return getContactDTO;
@@ -32,7 +32,7 @@ namespace ContactsAPI.Utils
         {
             var contact = new Contact()
             {
-                Adress = new Address()
+                Address = new Address()
                 {
                     Street = contactDTO.Address.Street,
                     City = contactDTO.Address.City,

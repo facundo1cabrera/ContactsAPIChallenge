@@ -10,6 +10,6 @@
         public DateTime BirthDate { get; set; }
         public string PersonalPhoneNumber { get; set; }
         public string WorkPhoneNumber { get; set; }
-        public Address Adress { get; set; }
+        public Address Address { get; set; }
     }
 }

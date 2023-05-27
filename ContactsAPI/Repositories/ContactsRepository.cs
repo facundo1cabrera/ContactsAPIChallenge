@@ -19,31 +19,31 @@ namespace ContactsAPI.Repositories
 
         public async Task<Contact> GetContactById(int id)
         {
-            var contact = await _dbContext.Contacts.Include(x => x.Adress).FirstOrDefaultAsync(x => x.Id == id);
+            var contact = await _dbContext.Contacts.Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
             return contact;
         }
 
         public async Task<Contact> GetContactByEmail(string email)
         {
-            var contact = await _dbContext.Contacts.Include(x => x.Adress).FirstOrDefaultAsync(x => x.Email == email);
+            var contact = await _dbContext.Contacts.Include(x => x.Address).FirstOrDefaultAsync(x => x.Email == email);
             return contact;
         }
 
         public async Task<List<Contact>> GetContactsByCity(string city)
         {
-            var contacts = await _dbContext.Contacts.Include(x => x.Adress).Where(x => x.Adress.City == city).ToListAsync();
+            var contacts = await _dbContext.Contacts.Include(x => x.Address).Where(x => x.Address.City == city).ToListAsync();
             return contacts;
         }
 
         public async Task<List<Contact>> GetContactsByState(string state)
         {
-            var contacts = await _dbContext.Contacts.Include(x => x.Adress).Where(x => x.Adress.State == state).ToListAsync();
+            var contacts = await _dbContext.Contacts.Include(x => x.Address).Where(x => x.Address.State == state).ToListAsync();
             return contacts;
         }
 
         public async Task<Contact> GetContactByPhoneNumber(string phoneNumber)
         {
-            var contact = await _dbContext.Contacts.Include(x => x.Adress).FirstOrDefaultAsync(x => x.PersonalPhoneNumber == phoneNumber || x.WorkPhoneNumber == phoneNumber);
+            var contact = await _dbContext.Contacts.Include(x => x.Address).FirstOrDefaultAsync(x => x.PersonalPhoneNumber == phoneNumber || x.WorkPhoneNumber == phoneNumber);
             return contact;
         }
 
@@ -73,12 +73,12 @@ namespace ContactsAPI.Repositories
                 await contactDTO.ProfilaImage.CopyToAsync(memoryStream);
                 var content = memoryStream.ToArray();
                 var extension = Path.GetExtension(contactDTO.ProfilaImage.FileName);
-                contact.ProfilaImage = await _fileStorage.EditFile(content, extension, _fileStorage.GetContainerName(), contact.ProfilaImage
+                contact.ProfilaImage = await _fileStorage.EditFile(content, extension, _fileStorage.GetContainerName(), contact.ProfilaImage,
                     contactDTO.ProfilaImage.ContentType);
             }
 
             contact.Id = id;
-            contact.Adress.Id = id;
+            contact.Address.Id = id;
             _dbContext.Update(contact);
             await _dbContext.SaveChangesAsync();
         }
