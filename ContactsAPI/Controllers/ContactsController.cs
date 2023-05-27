@@ -29,6 +29,10 @@ namespace ContactsAPI.Controllers
         [HttpGet("email/{email}")]
         public async Task<ActionResult<GetContactDTO>> GetContactByEmail(string email)
         {
+            if (!email.IsEmailAddress())
+            {
+                return BadRequest();
+            }
             var contact = await _contactsService.GetContactByEmail(email);
             if (contact == null)
             {
