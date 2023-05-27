@@ -1,5 +1,6 @@
 ﻿using ContactsAPI.ApiModels;
 using ContactsAPI.Services;
+using ContactsAPI.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactsAPI.Controllers
@@ -16,7 +17,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpGet("id/{id:int}")]
-        public async Task<ActionResult<GetContactDTO>> GetContactById(int id)
+        public async Task<IActionResult> GetContactById(int id)
         {
             var contact = await _contactsService.GetContactById(id);
             if (contact == null)
@@ -27,7 +28,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpGet("email/{email}")]
-        public async Task<ActionResult<GetContactDTO>> GetContactByEmail(string email)
+        public async Task<IActionResult> GetContactByEmail(string email)
         {
             if (!email.IsEmailAddress())
             {
@@ -42,21 +43,21 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpGet("city/{city}")]
-        public async Task<ActionResult<List<GetContactDTO>>> GetContactsByCity(string city)
+        public async Task<IActionResult> GetContactsByCity(string city)
         {
             var contact = await _contactsService.GetContactsByCity(city);
             return Ok(contact);
         }
 
         [HttpGet("state/{state}")]
-        public async Task<ActionResult<List<GetContactDTO>>> GetContactsByState(string state)
+        public async Task<IActionResult> GetContactsByState(string state)
         {
             var contact = await _contactsService.GetContactsByState(state);
             return Ok(contact);
         }
 
         [HttpGet("phone/{phoneNumber}")]
-        public async Task<ActionResult<List<GetContactDTO>>> GetContactsByPhoneNumber(string phoneNumber)
+        public async Task<IActionResult> GetContactByPhoneNumber(string phoneNumber)
         {
             var contact = await _contactsService.GetContactByPhoneNumber(phoneNumber);
             if (contact == null)
@@ -67,7 +68,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateContact([FromForm] CreateContactDTO createContactDTO)
+        public async Task<IActionResult> CreateContact([FromForm] CreateContactDTO createContactDTO)
         {
             var created = await _contactsService.CreateContact(createContactDTO);
             if (!created)
@@ -78,7 +79,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateContact(int id,[FromForm] CreateContactDTO contactDTO)
+        public async Task<IActionResult> UpdateContact(int id,[FromForm] CreateContactDTO contactDTO)
         {
             var updated = await _contactsService.UpdateContact(id, contactDTO);
             if (!updated)
@@ -89,7 +90,7 @@ namespace ContactsAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteContact(int id)
+        public async Task<IActionResult> DeleteContact(int id)
         {
             var deleted = await _contactsService.DeleteContact(id);
             if (!deleted)
