@@ -35,7 +35,7 @@
 
         public async Task<string> SaveFile(byte[] data, string extension, string container, string contentType)
         {
-            var fileName = $"{Guid.NewGuid()}.{extension}";
+            var fileName = $"{Guid.NewGuid()}{extension}";
             string folder = Path.Combine(_env.WebRootPath, container);
 
             if (!Directory.Exists(folder))

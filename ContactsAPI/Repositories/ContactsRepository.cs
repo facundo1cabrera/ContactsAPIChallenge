@@ -66,20 +66,33 @@ namespace ContactsAPI.Repositories
 
         public async Task UpdateContact(CreateContactDTO contactDTO, int id)
         {
-            var contact = contactDTO.MapFromCreateContactDTOToContact();
+            var contactDB = await _dbContext.Contacts.Include(x => x.Address).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (contactDB == null)
+            {
+                return;
+            }
+
+            contactDB.Email = contactDTO.Email;
+            contactDB.WorkPhoneNumber = contactDTO.WorkPhoneNumber;
+            contactDB.PersonalPhoneNumber = contactDTO.PersonalPhoneNumber;
+            contactDB.BirthDate = contactDTO.BirthDate;
+            contactDB.Company = contactDTO.Company;
+            contactDB.Name = contactDTO.Name;
+            contactDB.Address.City = contactDTO.Address.City;
+            contactDB.Address.State = contactDTO.Address.State;
+            contactDB.Address.Street = contactDTO.Address.Street;
+            contactDB.Address.Country = contactDTO.Address.Country;
 
             using (var memoryStream = new MemoryStream())
             {
                 await contactDTO.ProfilaImage.CopyToAsync(memoryStream);
                 var content = memoryStream.ToArray();
                 var extension = Path.GetExtension(contactDTO.ProfilaImage.FileName);
-                contact.ProfilaImage = await _fileStorage.EditFile(content, extension, _fileStorage.GetContainerName(), contact.ProfilaImage,
+                contactDB.ProfilaImage = await _fileStorage.EditFile(content, extension, _fileStorage.GetContainerName(), contactDB.ProfilaImage,
                     contactDTO.ProfilaImage.ContentType);
             }
 
-            contact.Id = id;
-            contact.Address.Id = id;
-            _dbContext.Update(contact);
             await _dbContext.SaveChangesAsync();
         }
 
