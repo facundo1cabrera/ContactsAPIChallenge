@@ -24,6 +24,20 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+// Apply latest migration
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var context = scope.ServiceProvider.GetService<AppDbContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // Log any errors
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
