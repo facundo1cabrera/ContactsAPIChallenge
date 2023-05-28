@@ -51,7 +51,7 @@ coupling between the business layer and the persistance layer, and because the p
 we have much less coupling and a codebase that is easier to maintain.
 
 This project is built on top of .NET 6 which uses a los of decorators (or attributes depending on what you call them) for endpoints 
-definitios, for routing behavior or for model validations. Those are implementations of the decorator pattern.
+definitions, for routing behavior or for model validations. Those are implementations of the decorator pattern.
 
 
 ## SOLID Principles
@@ -69,7 +69,7 @@ The adherence to these principles can be observed throughout the codebase.
 ## Testing
 
 The project includes integration tests made with XUnit. The test suite can be found in ContactsAPI.Tests. These tests verify the functionality and behavior of the endpoints, ensuring that they produce the expected results and handle various scenarios correctly.
-Since we are using dependency injection it is easy to set up mocks of the dependencies (we are using Moq) and own implementations, there are some tests that use repositories mocks and some use the Entity Framework on memory provider, probably in the future will be nice to use a real test Database for the tests.
+Since we are using dependency injection it is easy to set up mocks of the dependencies (we are using Moq) and own implementations, there are some tests that use repositories mocks and some use the Entity Framework on memory provider, probably in the future would be nice to use a real test Database for the tests.
 This upgrade can be easily done by changing the CreateContext function from the BaseTests class of the ContactsAPI.Tests project.
 
 To run the tests, execute the following command:
@@ -82,7 +82,7 @@ Make sure that the project dependencies are installed before running the tests.
 
 ## Environment variables
 
-Since this is just a challenge and it does now have any intention at least for being deployed to a production environment, it was easier to set up the project with hardcoded connection strings in the appsettings.{env}.json files. A good approach for improving this could be to use application secrets to override the connection strings, making the code changes close to cero, or we could get the values via Environment values and change the code that uses the connection string from the appsettings to a function that creates a connection string with the env variables.
+Since this is just a challenge and it doesn't have any intention (at least for now) of being deployed to a production environment, it was easier to set up the project with hardcoded connection strings in the appsettings.{env}.json files. A good approach for improving this could be to use application secrets to override the connection strings, making the code changes close to zero, or we could get the values via Environment variables and change the code that uses the connection string from the appsettings to a function that creates a connection string with the env variables.
 
 
 ## Contributing
