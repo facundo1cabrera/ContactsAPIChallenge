@@ -34,7 +34,7 @@ To run the project locally, follow these steps:
 The API exposes the following endpoints:
 
 - `POST /contacts` - Create a new contact record. The request should include the contact details in the request body.
-- `GET /contacts/id/{id}` - Retrieve a contact record by its ID.
+- `GET /contacts/{id}` - Retrieve a contact record by its ID.
 - `PUT /contacts/{id}` - Update an existing contact record with new information. The request should include the updated contact details in the request body.
 - `DELETE /contacts/{id}` - Delete a contact record by its ID.
 - `GET /contacts/email/{email}` - Retrieve a contact record by its Email.
@@ -54,7 +54,6 @@ This project is built on top of .NET 6 which uses a los of decorators (or attrib
 definitios, for routing behavior or for model validations. Those are implementations of the decorator pattern.
 
 
-
 ## SOLID Principles
 
 The project adheres to the SOLID principles, which are fundamental principles for writing maintainable and extensible software. These principles ensure that the codebase is flexible, testable, and easy to understand and maintain. The SOLID principles applied in this project are:
@@ -69,11 +68,11 @@ The adherence to these principles can be observed throughout the codebase.
 
 ## Testing
 
-The project includes integration tests made with XUnit. The test suite can be found in ContactsAPI.Tests. These tests verify the functionality and behavior of the endpoints, ensuring that it produces the expected results and handles various scenarios correctly.
-Since we are using dependency injection it is easy to set up mocks (we are using Moq) and own implementations, there are some tests that use mock and some use the Entity Framework on memory provider, probably in the future will be nice to use a real test Database for the tests.
+The project includes integration tests made with XUnit. The test suite can be found in ContactsAPI.Tests. These tests verify the functionality and behavior of the endpoints, ensuring that they produce the expected results and handle various scenarios correctly.
+Since we are using dependency injection it is easy to set up mocks of the dependencies (we are using Moq) and own implementations, there are some tests that use repositories mocks and some use the Entity Framework on memory provider, probably in the future will be nice to use a real test Database for the tests.
 This upgrade can be easily done by changing the CreateContext function from the BaseTests class of the ContactsAPI.Tests project.
 
-To run the unit tests, execute the following command:
+To run the tests, execute the following command:
 
 ```bash
 [dotnet test]
