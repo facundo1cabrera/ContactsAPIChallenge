@@ -16,7 +16,7 @@ namespace ContactsAPI.Controllers
             _contactsService = contactsService;
         }
 
-        [HttpGet("id/{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetContactById(int id)
         {
             var contact = await _contactsService.GetContactById(id);
@@ -78,7 +78,7 @@ namespace ContactsAPI.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateContact(int id,[FromForm] CreateContactDTO contactDTO)
         {
             var updated = await _contactsService.UpdateContact(id, contactDTO);
@@ -89,7 +89,7 @@ namespace ContactsAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteContact(int id)
         {
             var deleted = await _contactsService.DeleteContact(id);
