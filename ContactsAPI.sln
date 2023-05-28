@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External files", "External files", "{41E3F417-FBE6-4A37-93C2-E6FD31385D5C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.prod.yml = docker-compose.prod.yml
+		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Tests", "ContactsAPI.Tests\ContactsAPI.Tests.csproj", "{7D57EE32-E531-4835-A79B-39180DFDF00A}"

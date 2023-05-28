@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  contacts-api:
+    container_name: contacts-api
+    image: ${DOCKER_REGISTRY-}contactsapi
+    build:
+      context: .
+      dockerfile: ContactsAPI/Dockerfile
+    ports: 
+      - 8001:80
+    depends_on:
+      - db
+  db:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    user: root
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=admin123aa1!
+    volumes:
+      - db-data:/var/opt/mssql/data/
+
+volumes:
+  db-data:
