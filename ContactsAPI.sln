@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External files", "External 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAPI.Tests", "AulersAPI.Tests\ContactsAPI.Tests.csproj", "{A0EF86B4-164A-4F80-A6ED-784D19A015A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsAPI.Tests", "ContactsAPI.Tests\ContactsAPI.Tests.csproj", "{7D57EE32-E531-4835-A79B-39180DFDF00A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +22,10 @@ Global
 		{C5E35946-5189-4DD9-AA9F-C12D59218B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E35946-5189-4DD9-AA9F-C12D59218B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5E35946-5189-4DD9-AA9F-C12D59218B0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0EF86B4-164A-4F80-A6ED-784D19A015A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0EF86B4-164A-4F80-A6ED-784D19A015A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0EF86B4-164A-4F80-A6ED-784D19A015A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0EF86B4-164A-4F80-A6ED-784D19A015A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D57EE32-E531-4835-A79B-39180DFDF00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D57EE32-E531-4835-A79B-39180DFDF00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D57EE32-E531-4835-A79B-39180DFDF00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D57EE32-E531-4835-A79B-39180DFDF00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
