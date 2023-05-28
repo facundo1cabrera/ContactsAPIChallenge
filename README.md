@@ -84,6 +84,9 @@ Make sure that the project dependencies are installed before running the tests.
 
 Since this is just a challenge and it doesn't have any intention (at least for now) of being deployed to a production environment, it was easier to set up the project with hardcoded connection strings in the appsettings.{env}.json files. A good approach for improving this could be to use application secrets to override the connection strings, making the code changes close to zero, or we could get the values via Environment variables and change the code that uses the connection string from the appsettings to a function that creates a connection string with the env variables.
 
+## Architecture/Design
+
+![image](https://github.com/facundo1cabrera/ContactsAPIChallenge/assets/83284235/6b3f92ce-e485-44ad-9aae-e7327562daf4)
 
 ## Contributing
 
